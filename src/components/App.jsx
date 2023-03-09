@@ -1,6 +1,4 @@
 import { ContactsList } from './contacts/contacts';
-import { ModalCreateContact } from './form/form';
-import { Filter } from './filter/filter';
 
 export const App = () => {
   return (
