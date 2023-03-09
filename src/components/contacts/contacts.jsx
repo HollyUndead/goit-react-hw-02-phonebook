@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import { Component } from 'react';
 import { ContactItem } from './contact';
 import { nanoid } from 'nanoid';
@@ -34,7 +35,6 @@ export class ContactsList extends Component {
       if (el.key !== key) {
         return el;
       }
-      return;
     });
     this.setState({ ...newState });
   };
@@ -74,7 +74,6 @@ export class ContactsList extends Component {
                   deleteFromState={this.deleteFromState}
                 />
               );
-              return;
             }
           })}
         </ul>
