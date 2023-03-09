@@ -34,6 +34,7 @@ export class ContactsList extends Component {
       if (el.key !== key) {
         return el;
       }
+      return;
     });
     this.setState({ ...newState });
   };
@@ -73,6 +74,7 @@ export class ContactsList extends Component {
                   deleteFromState={this.deleteFromState}
                 />
               );
+              return;
             }
           })}
         </ul>
