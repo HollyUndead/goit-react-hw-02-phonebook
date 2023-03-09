@@ -1,23 +1,22 @@
 import { Component } from 'react';
-import './fomr.css'
+import './fomr.css';
 
 export class FormCreateContact extends Component {
-
-    createNewContact = (ev) => {
-        ev.preventDefault()
-        const name = ev.target.name.value
-        const number = ev.target.number.value
-        if(number.length !== 7){
-          alert('Please, input valid phonenumber')
-          return
-        }
-        this.props.setNewState({name, number})
-        ev.target.reset()
+  createNewContact = ev => {
+    ev.preventDefault();
+    const name = ev.target.name.value;
+    const number = ev.target.number.value;
+    if (number.length !== 7) {
+      alert('Please, input valid phonenumber');
+      return;
     }
+    this.props.setNewState({ name, number });
+    ev.target.reset();
+  };
 
   render() {
     return (
-      <form onSubmit={this.createNewContact} className='form-contact'>
+      <form onSubmit={this.createNewContact} className="form-contact">
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -38,7 +37,9 @@ export class FormCreateContact extends Component {
           required
         />
 
-        <button type='submit' className='create-contact'>Add contact</button>
+        <button type="submit" className="create-contact">
+          Add contact
+        </button>
       </form>
     );
   }

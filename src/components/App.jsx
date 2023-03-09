@@ -1,6 +1,6 @@
-import { ContactsList } from "./contacts/contacts";
-import { ModalCreateContact } from "./form/form";
-import { Filter } from "./filter/filter";
+import { ContactsList } from './contacts/contacts';
+import { ModalCreateContact } from './form/form';
+import { Filter } from './filter/filter';
 
 export const App = () => {
   return (
@@ -12,10 +12,10 @@ export const App = () => {
         flexDirection: 'column',
         alignItems: 'center',
         fontSize: 40,
-        color: '#010101'
+        color: '#010101',
       }}
     >
-      <ContactsList/>
+      <ContactsList />
     </div>
   );
 };
