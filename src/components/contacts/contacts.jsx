@@ -34,6 +34,7 @@ export class ContactsList extends Component {
       return
     } else if(numbers.includes(Number(number))){
       alert(`${this.transformNumber(number)} is already in contacts`)
+      return
     } else {
       newState.name = name;
       newState.number = number;
