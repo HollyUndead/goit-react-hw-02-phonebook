@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 import './filter.css';
 
@@ -20,4 +21,8 @@ export class Filter extends Component {
       </div>
     );
   }
+}
+
+Filter.propTypes ={
+  setFilter: PropTypes.func
 }

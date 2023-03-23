@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from 'react';
 
 export class ContactItem extends Component {
@@ -5,18 +6,11 @@ export class ContactItem extends Component {
     this.props.deleteFromState(this.props.state.key);
   };
 
-  transformNumber = () => {
-    let numberArr = this.props.state.number.split('');
-    return `${numberArr.slice(0, 3).join('')}-${numberArr
-      .slice(3, 5)
-      .join('')}-${numberArr.slice(5, 7).join('')}`;
-  };
-
   render() {
     return (
       <li>
         <div className="contact-wrap">
-          {this.props.state.name}: {this.transformNumber()}
+          {this.props.state.name}: {this.props.transformNumber(this.props.state.number)}
           <button className="delete-contact" onClick={this.deletContact}>
             Delete
           </button>
@@ -24,4 +18,10 @@ export class ContactItem extends Component {
       </li>
     );
   }
+}
+
+ContactItem.propsTypes = {
+  deleteFromState: PropTypes.func,
+  transformNumber: PropTypes.func,
+  state: PropTypes.object
 }

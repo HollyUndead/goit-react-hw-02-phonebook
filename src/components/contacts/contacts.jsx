@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import { Component } from 'react';
-import { ContactItem } from './contact';
+import { ContactItem } from './contactItem';
 import { nanoid } from 'nanoid';
 import { FormCreateContact } from 'components/form/form';
 import { Filter } from 'components/filter/filter';
@@ -14,19 +14,33 @@ export class ContactsList extends Component {
     number: '',
   };
 
-  setNewContact = ({ name, number }) => {
+  transformNumber = (number) => {
+    let numberArr = number.split('');
+    return `${numberArr.slice(0, 3).join('')}-${numberArr
+      .slice(3, 5)
+      .join('')}-${numberArr.slice(5, 7).join('')}`;
+  };
+
+  setNewContact = ({ name, number, ev }) => {
     let newState = { ...this.state };
     const names = this.state.contacts.map(el => {
       return el.name.toLowerCase();
     });
+    const numbers = this.state.contacts.map(el =>{
+      return Number(el.number)
+    })
     if (names.includes(name.toLowerCase())) {
       alert(`${name} is already in contacts`);
+      return
+    } else if(numbers.includes(Number(number))){
+      alert(`${this.transformNumber(number)} is already in contacts`)
     } else {
       newState.name = name;
       newState.number = number;
       newState.contacts.push({ name, number, key: nanoid() });
       this.setState({ ...newState });
     }
+    ev.target.reset();
   };
 
   deleteFromState = key => {
@@ -72,6 +86,7 @@ export class ContactsList extends Component {
                   state={el}
                   key={el.key}
                   deleteFromState={this.deleteFromState}
+                  transformNumber={this.transformNumber}
                 />
               );
             }

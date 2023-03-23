@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import './fomr.css';
 
 export class FormCreateContact extends Component {
@@ -7,11 +8,10 @@ export class FormCreateContact extends Component {
     const name = ev.target.name.value;
     const number = ev.target.number.value;
     if (number.length !== 7) {
-      alert('Please, input valid phonenumber');
+      alert('Please, input valid phonenumber with 7 simbols');
       return;
     }
-    this.props.setNewState({ name, number });
-    ev.target.reset();
+    this.props.setNewState({ name, number, ev });
   };
 
   render() {
@@ -43,4 +43,8 @@ export class FormCreateContact extends Component {
       </form>
     );
   }
+}
+
+FormCreateContact.propTypes ={
+  setNewState: PropTypes.func
 }
