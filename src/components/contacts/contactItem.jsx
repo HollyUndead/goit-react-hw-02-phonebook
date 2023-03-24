@@ -3,14 +3,15 @@ import { Component } from 'react';
 
 export class ContactItem extends Component {
   deletContact = () => {
-    this.props.deleteFromState(this.props.state.key);
+    this.props.deleteFromState(this.props.state.id);
   };
 
   render() {
     return (
       <li>
         <div className="contact-wrap">
-          {this.props.state.name}: {this.props.transformNumber(this.props.state.number)}
+          {this.props.state.name}:{' '}
+          {this.props.transformNumber(this.props.state.number)}
           <button className="delete-contact" onClick={this.deletContact}>
             Delete
           </button>
@@ -23,5 +24,5 @@ export class ContactItem extends Component {
 ContactItem.propsTypes = {
   deleteFromState: PropTypes.func,
   transformNumber: PropTypes.func,
-  state: PropTypes.object
-}
+  state: PropTypes.object,
+};
