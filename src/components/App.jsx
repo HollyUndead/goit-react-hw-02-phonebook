@@ -57,9 +57,7 @@ export class App extends Component{
   };
 
   setFilter = filter => {
-    let newState = { ...this.state };
-    newState.filter = filter;
-    this.setState({ ...newState });
+    this.setState({ filter: filter });
   };
 
   render() {
